@@ -1902,7 +1902,11 @@ export class BattleActions {
 		pokemon.formeChange(speciesid, pokemon.getItem(), true);
 
 		// Zygarde-Mega: Core Enforcer -> Nihil Light (permanent + this turn)
-		if (pokemon.species.name === 'Zygarde-Mega') {
+		// Skipped if it already knows Nihil Light
+		if (
+			pokemon.species.name === 'Zygarde-Mega' &&
+			!pokemon.baseMoveSlots.some(slot => slot.id === 'nihillight')
+		) {
 			const nihil = this.dex.moves.get('nihillight');
 
 			// Permanent: replace the slot in both lists
@@ -1944,20 +1948,6 @@ export class BattleActions {
 		this.battle.runEvent('AfterMega', pokemon);
 		return true;
 	}
-
-	// Limit one mega evolution
-	const wasMega = pokemon.canMegaEvo;
-	for (const ally of pokemon.side.pokemon) {
-		if (wasMega) {
-			ally.canMegaEvo = false;
-		} else {
-			ally.canUltraBurst = null;
-		}
-	}
-
-	this.battle.runEvent('AfterMega', pokemon);
-	return true;
-}
 
 	// Let's Go
 	canMegaEvoX?: (this: BattleActions, pokemon: Pokemon) => string | null;
