@@ -1901,6 +1901,36 @@ export class BattleActions {
 
 		pokemon.formeChange(speciesid, pokemon.getItem(), true);
 
+		// Zygarde-Mega: Core Enforcer -> Nihil Light (permanent + this turn)
+		if (pokemon.species.name === 'Zygarde-Mega') {
+			const nihil = this.dex.moves.get('nihillight');
+
+			// Permanent: replace the slot in both lists
+			for (const slots of [pokemon.moveSlots, pokemon.baseMoveSlots]) {
+				const i = slots.findIndex(slot => slot.id === 'coreenforcer');
+				if (i < 0) continue;
+				const old = slots[i];
+				const maxpp = nihil.noPPBoosts ? nihil.pp : nihil.pp * 8 / 5;
+				slots[i] = {
+					move: nihil.name,
+					id: nihil.id,
+					pp: Math.min(old.pp, maxpp),
+					maxpp,
+					target: nihil.target,
+					disabled: false,
+					disabledSource: '',
+					used: false,
+				};
+			}
+
+			// This turn: swap the already-queued Core Enforcer
+			const queued = this.battle.queue.willMove(pokemon);
+			if (queued && queued.moveid === 'coreenforcer') {
+				queued.move = this.dex.getActiveMove('nihillight');
+				queued.moveid = 'nihillight';
+			}
+		}
+
 		// Limit one mega evolution
 		const wasMega = pokemon.canMegaEvo;
 		for (const ally of pokemon.side.pokemon) {
@@ -1914,6 +1944,20 @@ export class BattleActions {
 		this.battle.runEvent('AfterMega', pokemon);
 		return true;
 	}
+
+	// Limit one mega evolution
+	const wasMega = pokemon.canMegaEvo;
+	for (const ally of pokemon.side.pokemon) {
+		if (wasMega) {
+			ally.canMegaEvo = false;
+		} else {
+			ally.canUltraBurst = null;
+		}
+	}
+
+	this.battle.runEvent('AfterMega', pokemon);
+	return true;
+}
 
 	// Let's Go
 	canMegaEvoX?: (this: BattleActions, pokemon: Pokemon) => string | null;
