@@ -3830,18 +3830,40 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 	mod: 'gen9',
 	ruleset: [
 		// Standard NatDex, expanded so we control the item check
-		'Obtainable', '!Obtainable Formes',
+		'Obtainable',
 		'+Unobtainable', '+Past', '+Future',
 		'Sketch Post-Gen 7 Moves', 'Team Preview', 'Nickname Clause',
 		'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause',
 		// Ubers-style clauses
 		'Species Clause', 'Sleep Clause Mod', 'OHKO Clause',
-		'Evasion Moves Clause', 'Evasion Items Clause', 'Terastal Clause',
+		'Evasion Moves Clause', 'Evasion Items Clause',
+		'+Abomasite', '+Absolite', '+Absolite Z', '+Aerodactylite', '+Aggronite',
+		'+Alakazite', '+Altarianite', '+Ampharosite', '+Audinite', '+Banettite',
+		'+Barbaracite', '+Baxcalibrite', '+Beedrillite', '+Blastoisinite', '+Blazikenite',
+		'+Cameruptite', '+Chandelurite', '+Charizardite X', '+Charizardite Y', '+Chesnaughtite',
+		'+Chimechite', '+Clefablite', '+Crabominite', '+Darkranite', '+Delphoxite',
+		'+Diancite', '+Dragalgite', '+Dragoninite', '+Drampanite', '+Eelektrossite',
+		'+Emboarite', '+Excadrite', '+Falinksite', '+Feraligite', '+Floettite',
+		'+Froslassite', '+Galladite', '+Garchompite', '+Garchompite Z', '+Gardevoirite',
+		'+Gengarite', '+Glalitite', '+Glimmoranite', '+Golisopite', '+Golurkite',
+		'+Greninjite', '+Gyaradosite', '+Hawluchanite', '+Heatranite', '+Heracronite',
+		'+Houndoominite', '+Kangaskhanite', '+Latiasite', '+Latiosite', '+Lopunnite',
+		'+Lucarionite', '+Lucarionite Z', '+Magearnite', '+Malamarite', '+Manectite',
+		'+Mawilite', '+Medichamite', '+Meganiumite', '+Meowsticite', '+Metagrossite',
+		'+Mewtwonite X', '+Mewtwonite Y', '+Pidgeotite', '+Pinsirite', '+Pyroarite',
+		'+Raichunite X', '+Raichunite Y', '+Sablenite', '+Salamencite', '+Sceptilite',
+		'+Scizorite', '+Scolipite', '+Scovillainite', '+Scraftinite', '+Sharpedonite',
+		'+Skarmorite', '+Slowbronite', '+Staraptite', '+Starminite', '+Steelixite',
+		'+Swampertite', '+Tatsugirinite', '+Tyranitarite', '+Venusaurite', '+Victreebelite',
+		'+Zeraorite', '+Zygardite',
 	],
 	banlist: ['Assist', 'Baton Pass'],
 	onValidateSet(set) {
-		if (this.toID(set.item) !== 'zygardite') return;
 		const species = this.dex.species.get(set.species);
+		if (species.id === 'zygardemega') {
+			return [`Zygarde-Mega can't be used directly. Use Zygarde-10% or Zygarde-50% with Power Construct holding Zygardite.`];
+		}
+		if (this.toID(set.item) !== 'zygardite') return;
 		if (species.name === 'Zygarde-Complete') return; // any ability is fine
 		if (this.toID(set.ability) !== 'powerconstruct') {
 			return [`${set.name || set.species} can only hold Zygardite if it is Zygarde-Complete or has Power Construct.`];
