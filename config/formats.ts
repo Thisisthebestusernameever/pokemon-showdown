@@ -3826,6 +3826,16 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		banlist: ['ND AG', 'Ultranecrozium Z', 'Moody', 'Shadow Tag', 'Baton Pass'],
 	},
 	{
+	name: "[Gen 9] National Dex Ubers + Champions",
+	mod: 'gen9',
+	ruleset: [
+		'Standard NatDex', '!Obtainable Formes', '!Evasion Clause',
+		'Evasion Moves Clause', 'Evasion Items Clause', 'Terastal Clause',
+		'+Future',
+	],
+	banlist: ['Assist', 'Baton Pass'],
+   },
+	{
 		name: "[Gen 9] National Dex Ubers UU",
 		mod: 'gen9',
 		searchShow: false,
