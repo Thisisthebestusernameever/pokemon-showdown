@@ -3831,7 +3831,6 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 	ruleset: [
 		'Standard NatDex', '!Obtainable Formes', '!Evasion Clause',
 		'Evasion Moves Clause', 'Evasion Items Clause', 'Terastal Clause',
-		'+Future',
 	],
 	banlist: ['Assist', 'Baton Pass'],
    },
