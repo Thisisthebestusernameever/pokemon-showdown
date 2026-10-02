@@ -3829,11 +3829,25 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 	name: "[Gen 9] National Dex Ubers + Champions",
 	mod: 'gen9',
 	ruleset: [
-		'Standard NatDex', '!Obtainable Formes', '!Evasion Clause',
+		// Standard NatDex, expanded so we control the item check
+		'Obtainable', '!Obtainable Formes',
+		'+Unobtainable', '+Past', '+Future',
+		'Sketch Post-Gen 7 Moves', 'Team Preview', 'Nickname Clause',
+		'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause',
+		// Ubers-style clauses
+		'Species Clause', 'Sleep Clause Mod', 'OHKO Clause',
 		'Evasion Moves Clause', 'Evasion Items Clause', 'Terastal Clause',
 	],
 	banlist: ['Assist', 'Baton Pass'],
-   },
+	onValidateSet(set) {
+		if (this.toID(set.item) !== 'zygardite') return;
+		const species = this.dex.species.get(set.species);
+		if (species.name === 'Zygarde-Complete') return; // any ability is fine
+		if (this.toID(set.ability) !== 'powerconstruct') {
+			return [`${set.name || set.species} can only hold Zygardite if it is Zygarde-Complete or has Power Construct.`];
+		}
+	},
+},
 	{
 		name: "[Gen 9] National Dex Ubers UU",
 		mod: 'gen9',
