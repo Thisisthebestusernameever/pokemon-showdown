@@ -3837,6 +3837,7 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		// Ubers-style clauses
 		'Species Clause', 'Sleep Clause Mod', 'OHKO Clause',
 		'Evasion Moves Clause', 'Evasion Items Clause',
+		// Mega stones
 		'+Abomasite', '+Absolite', '+Absolite Z', '+Aerodactylite', '+Aggronite',
 		'+Alakazite', '+Altarianite', '+Ampharosite', '+Audinite', '+Banettite',
 		'+Barbaracite', '+Baxcalibrite', '+Beedrillite', '+Blastoisinite', '+Blazikenite',
@@ -3856,6 +3857,25 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		'+Skarmorite', '+Slowbronite', '+Staraptite', '+Starminite', '+Steelixite',
 		'+Swampertite', '+Tatsugirinite', '+Tyranitarite', '+Venusaurite', '+Victreebelite',
 		'+Zeraorite', '+Zygardite',
+		// Mega species (Zygarde-Mega intentionally left out)
+		'+Venusaur-Mega', '+Charizard-Mega-X', '+Charizard-Mega-Y', '+Blastoise-Mega', '+Beedrill-Mega',
+		'+Pidgeot-Mega', '+Raichu-Mega-X', '+Raichu-Mega-Y', '+Clefable-Mega', '+Alakazam-Mega',
+		'+Victreebel-Mega', '+Slowbro-Mega', '+Gengar-Mega', '+Kangaskhan-Mega', '+Starmie-Mega',
+		'+Pinsir-Mega', '+Gyarados-Mega', '+Aerodactyl-Mega', '+Dragonite-Mega', '+Mewtwo-Mega-X',
+		'+Mewtwo-Mega-Y', '+Meganium-Mega', '+Feraligatr-Mega', '+Ampharos-Mega', '+Steelix-Mega',
+		'+Scizor-Mega', '+Heracross-Mega', '+Skarmory-Mega', '+Houndoom-Mega', '+Tyranitar-Mega',
+		'+Sceptile-Mega', '+Blaziken-Mega', '+Swampert-Mega', '+Gardevoir-Mega', '+Sableye-Mega',
+		'+Mawile-Mega', '+Aggron-Mega', '+Medicham-Mega', '+Manectric-Mega', '+Sharpedo-Mega',
+		'+Camerupt-Mega', '+Altaria-Mega', '+Banette-Mega', '+Chimecho-Mega', '+Absol-Mega',
+		'+Absol-Mega-Z', '+Glalie-Mega', '+Salamence-Mega', '+Metagross-Mega', '+Latias-Mega',
+		'+Latios-Mega', '+Rayquaza-Mega', '+Staraptor-Mega', '+Lopunny-Mega', '+Garchomp-Mega',
+		'+Garchomp-Mega-Z', '+Lucario-Mega', '+Lucario-Mega-Z', '+Abomasnow-Mega', '+Gallade-Mega',
+		'+Froslass-Mega', '+Heatran-Mega', '+Darkrai-Mega', '+Emboar-Mega', '+Excadrill-Mega',
+		'+Audino-Mega', '+Scolipede-Mega', '+Scrafty-Mega', '+Eelektross-Mega', '+Chandelure-Mega',
+		'+Golurk-Mega', '+Chesnaught-Mega', '+Delphox-Mega', '+Greninja-Mega', '+Pyroar-Mega',
+		'+Floette-Mega', '+Malamar-Mega', '+Barbaracle-Mega', '+Dragalge-Mega', '+Hawlucha-Mega',
+		'+Diancie-Mega', '+Crabominable-Mega', '+Golisopod-Mega', '+Drampa-Mega', '+Magearna-Mega',
+		'+Zeraora-Mega', '+Falinks-Mega', '+Scovillain-Mega', '+Glimmora-Mega', '+Baxcalibur-Mega',
 	],
 	banlist: ['Assist', 'Baton Pass'],
 	onValidateSet(set) {
